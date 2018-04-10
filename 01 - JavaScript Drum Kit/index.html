@@ -9,51 +9,51 @@
 
 
   <div class="keys">
-    <div data-key="65" class="key">
+    <div onclick="clickSound(65)" data-key="65" class="key">
       <kbd>A</kbd>
       <span class="sound">Apple</span>
     </div>
-    <div data-key="83" class="key">
+    <div onclick="clickSound(83)" data-key="83" class="key">
       <kbd>S</kbd>
       <span class="sound">Show</span>
     </div>
-    <div data-key="68" class="key">
+    <div onclick="clickSound(68)" data-key="68" class="key">
       <kbd>D</kbd>
       <span class="sound">Daddy</span>
     </div>
-    <div data-key="70" class="key">
+    <div onclick="clickSound(70)" data-key="70" class="key">
       <kbd>F</kbd>
       <span class="sound">Fun</span>
     </div>
-    <div data-key="71" class="key">
+    <div onclick="clickSound(71)" data-key="71" class="key">
       <kbd>G</kbd>
       <span class="sound">Goat</span>
     </div>
-    <div data-key="72" class="key">
+    <div onclick="clickSound(72)" data-key="72" class="key">
       <kbd>H</kbd>
       <span class="sound">Happy</span>
     </div>
-    <div data-key="74" class="key">
+    <div onclick="clickSound(74)" data-key="74" class="key">
       <kbd>J</kbd>
       <span class="sound">Joker</span>
     </div>
-    <div data-key="75" class="key">
+    <div onclick="clickSound(75)" data-key="75" class="key">
       <kbd>K</kbd>
       <span class="sound">King</span>
     </div>
-    <div data-key="76" class="key">
+    <div onclick="clickSound(76)" data-key="76" class="key">
       <kbd>L</kbd>
       <span class="sound">Love</span>
     </div>
     
-      <div data-key="67" class="key">
+      <div onclick="clickSound(67)" data-key="67" class="key">
         <kbd>C</kbd>
         <span class="sound">Cookies</span>
       </div>
-      <div data-key="73" class="key">
+      <div onclick="clickSound(73)" data-key="73" class="key">
           <kbd>I</kbd>
           <span class="sound">I love Daddy</span>
-        </div>
+      </div>
     
   </div>
 
@@ -79,8 +79,19 @@
   }
 
    function playSound(e) {
+    console.log(e)
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
+    if (!audio) return;
+    audio.currentTime = 0;
+    audio.play();
+    key.classList.add('playing');
+   }
+
+function clickSound(e) {
+    console.log(e)
+    const audio = document.querySelector(`audio[data-key="${e}"]`)
+    const key = document.querySelector(`.key[data-key="${e}"]`)
     if (!audio) return;
     audio.currentTime = 0;
     audio.play();
